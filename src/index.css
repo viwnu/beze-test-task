@@ -1,14 +1,26 @@
-body {
+@font-face {
+    font-family: 'Inter';
+    src: url('../public/assets/fonts/Inter-Bold.ttf') format('ttf');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../public/assets/fonts/Roboto-Regular.ttf') format('ttf');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../public/assets/fonts/Roboto-Medium.ttf') format('ttf');
+    font-weight: 500;
+}
+
+body, body * {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
-  code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-      monospace;
-  }
-  
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto';
+    font-size: 14px;
+    font-weight: 400;
+}

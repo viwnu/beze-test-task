@@ -1,0 +1,39 @@
+.input {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.125rem;
+}
+
+.input * {
+    width: 100%;
+}
+
+.input select,
+.input textarea,
+.input input {
+    border-radius: 0.5rem;
+    border: 1px solid var(--stroke-grey, #C8C8C8);
+    background: var(--bg-white, #FFF);
+    padding: 0.5rem;
+    font-family: 'Roboto';
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5rem; /* 150% */
+}
+
+.input select {
+    color: var(--text-paragraph-secondary, #656565);
+}
+
+.input .selected {
+    color: black;
+}
+
+.input textarea {
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 3rem;
+}
