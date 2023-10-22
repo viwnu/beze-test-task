@@ -23,19 +23,19 @@ const cardTextFields = [
 
 
 
-export default function FilledCard() {
+export default function FilledCard({setModal}) {
     return (
         <>
             <TitleContainer>
-                <Text type='title' text = 'Организация' />
-                <Button type='secondary' > <IconEdit/> Редактировать</Button>
+                <Text type='title' >Организация</Text>
+                <Button type='secondary' onClick={() => setModal('edit')} > <IconEdit/> Редактировать</Button>
             </TitleContainer>
             <div className={styles.content} >
                 {cardTextFields.map ((item, index) => {
                     return (
                         <div key = {index} >
-                            <Text type='description' text={item.label} />
-                            <Text type='label' text={item.value}  style={{fontSize: '1rem'}} />
+                            <Text type='description' >{item.label}</Text>
+                            <Text type='label' style={{fontSize: '1rem'}} >{item.value}</Text>
                         </div>
                     )
                 })}

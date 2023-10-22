@@ -1,12 +1,25 @@
 import Text from '../Text/Text'
 import styles from './style.css'
 
-export default function Input ({ label, type, placeholder = '', options=[], description='' }) {
+export default function Input ({ label, type, placeholder = '', options=[], required=false, description='', value }) {
+    console.log('required: ', required)
     return (
         <label className={styles.input} >
-            <Text type='label' text={label} />
+            <>
+                <Text type='label' >{
+                    required
+                    ? <><span className={styles.requred} >* </span> {label} </>
+                    : <>{label}</>
+                }</Text>
+            </>
             {type === 'select' && type != 'textarea'
-                ? <select defaultValue='Select your option' onChange={e => console.log(e.target.value)} >
+                ? <select
+                    value={value}
+                    defaultValue='Select your option'
+                    className={styles.notselected}
+                    onChange={e => e.target.className=styles.selcted }
+                    required={required}
+                >
                     <option disabled>Select your option</option>
                     {options.map((option, index) => {
                         return (
@@ -16,10 +29,10 @@ export default function Input ({ label, type, placeholder = '', options=[], desc
                 </select>
                 : type === 'textarea'
                     ? <>
-                        <textarea placeholder={placeholder} ></textarea>
-                        <Text type='description' text={description} />
+                        <textarea placeholder={placeholder} value={value} ></textarea>
+                        <Text type='description' >{description}</Text>
                     </>
-                    : <input type={type} placeholder={placeholder} />
+                    : <input type={type} placeholder={placeholder} value={value} />
             }
         </label>
     )

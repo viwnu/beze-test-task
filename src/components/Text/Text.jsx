@@ -7,12 +7,12 @@ const types = {
     ['description']: styles.description,
 }
 
-export default function Text ({ type, text, style={} }) {
+export default function Text ({ type, children, style={} }) {
     const className = types[type]
     return (
         <p
             className={className}
             style={style}
-        > {text} </p>
+        > {children} </p>
     )
 }

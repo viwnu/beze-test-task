@@ -4,17 +4,21 @@ import Text from '../Text/Text'
 import IconCross from '../icons/IconCross'
 import Form from './Form'
 
-export default function EditCard ({setModal}) {
+export default function EditCard ({setModal, organization, setOrganization}) {
     return (
         <>
             <TitleContainer>
-                <Text type='title' text = 'Организация' />
-                <Button type='secondary' >
+                <Text type='title' >Организация</Text>
+                <Button type='secondary' onClick={() => setModal('')}>
                     <IconCross/>
                     Отменить
                 </Button>
             </TitleContainer>
-            <Form setModal={setModal} />
+            <Form
+                setModal={setModal}
+                organization={organization}
+                setOrganization={setOrganization}
+            />
         </>
     )
 }

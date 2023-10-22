@@ -24,11 +24,15 @@
     line-height: 1.5rem; /* 150% */
 }
 
-.input select {
+.requred {
+    color: red;
+}
+
+.notselected {
     color: var(--text-paragraph-secondary, #656565);
 }
 
-.input .selected {
+.selected {
     color: black;
 }
 

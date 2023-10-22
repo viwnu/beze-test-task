@@ -1,26 +1,37 @@
+import { useState } from 'react'
+
 import Modal from './components/Modal/Modal'
 import EmptyCard from './components/EmptyCard/EmptyCard'
 import EditCard from './components/EditCard/EditCard'
 import FilledCard from './components/FilledCard/FilledCard'
-
-import styles from  './index.css'
-import { useState } from 'react'
 import Button from './components/Button/Button'
 
-const CurrentCard = ({cardName, setModal}) => {
+import styles from  './index.css'
+
+const CurrentCard = ({cardName, setModal, organization, setOrganization}) => {
   const cards = {
     ['empty']: EmptyCard,
     ['edit']: EditCard,
-    ['filled']: FilledCard
+    ['filled']: FilledCard,
   }
   const Current = cards[cardName]
-  return <Current setModal={setModal} />
+  return (
+    <Current
+      setModal={setModal}
+      organization={organization}
+      setOrganization={setOrganization}
+    />
+  )
 }
 
 export default function App() {
   const [modal, setModal] = useState('')
-
-  
+  const [organization, setOrganization] = useState({
+    type: '',
+    name: '',
+    description: '',
+    logo: [],
+  })
 
   return (
 
@@ -35,8 +46,13 @@ export default function App() {
     >
       <Button type='add' onClick={() => setModal('empty') } >Show Modal</Button>
       {modal !== ''
-        ? <Modal>
-            <CurrentCard cardName={modal} setModal={setModal} />
+        ? <Modal closeModal={() => setModal('')} >
+            <CurrentCard
+              cardName={modal}
+              setModal={setModal}
+              organization={organization}
+              setOrganization={setOrganization}
+            />
           </Modal>
          : ''
       }

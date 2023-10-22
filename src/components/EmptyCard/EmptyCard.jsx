@@ -7,9 +7,9 @@ export default function EmptyCard({setModal}) {
     return (
         <>
             <TitleContainer>
-                <Text type='title' text='Организация' />
+                <Text type='title' >Организация</Text>
             </TitleContainer>
-            <Text type='content' text = 'Название организации, логотип и описание' />
+            <Text type='content' >Название организации, логотип и описание</Text>
             <Button type='add' onClick={() => setModal('edit')}>
                 <IconPlus/>
                 Добавить
