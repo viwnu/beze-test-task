@@ -33,8 +33,6 @@ export default function App() {
     logo: [],
   })
 
-  console.log('in app: ', organization)
-
   return (
 
     <div
@@ -46,7 +44,10 @@ export default function App() {
         alignItems: 'center',
       }}
     >
-      <Button type='add' onClick={() => setModal('empty') } >Show Modal</Button>
+      <Button
+        type='add'
+        onClick={() => setModal(organization.type === '' ? 'empty' : 'filled') }
+      >Show Modal</Button>
       {modal !== ''
         ? <Modal closeModal={() => setModal('')} >
             <CurrentCard

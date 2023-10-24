@@ -28,6 +28,10 @@
     color: red;
 }
 
+.notValid {
+    border-color: red;
+}
+
 .notselected {
     color: var(--text-paragraph-secondary, #656565);
 }

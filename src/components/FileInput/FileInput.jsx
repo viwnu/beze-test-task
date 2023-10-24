@@ -47,7 +47,7 @@ export default function FileInput({ label, required=false, setFile }) {
   const handleDrop = e => {
     e.preventDefault()
     e.stopPropagation()
-    
+        
     let files = []
     if (e.type === 'change') {
       files = [...e.target.files]

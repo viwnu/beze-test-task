@@ -1,8 +1,21 @@
 import Text from '../Text/Text'
 import styles from './style.css'
 
-export default function Input ({ label, type, placeholder = '', options=[], required=false, description='', value, setValue }) {
-    console.log('required: ', required)
+export default function Input ({
+    label,
+    type,placeholder = '',
+    options=[],
+    required=false,
+    description='',
+    value,
+    setValue,
+}) {
+    const onChange = (e) => {
+        e.target.className=styles.selcted
+        setValue(e.target.value)
+        if(!e.target.validity.valid) e.target.className=styles.notValid
+        else if(e.target.validity.valid) e.target.className=''
+    }
     return (
         <label className={styles.input} >
             <>
@@ -14,13 +27,9 @@ export default function Input ({ label, type, placeholder = '', options=[], requ
             </>
             {type === 'select' && type != 'textarea'
                 ? <select
-                    value={value}
-                    defaultValue='Select your option'
+                    value={value.length === 0 ?'Select your option' : value}
                     className={styles.notselected}
-                    onChange={e => {
-                        e.target.className=styles.selcted
-                        setValue(e.target.value)
-                    } }
+                    onChange={onChange}
                     required={required}
                 >
                     <option disabled>Select your option</option>
@@ -35,7 +44,7 @@ export default function Input ({ label, type, placeholder = '', options=[], requ
                         <textarea
                             placeholder={placeholder}
                             value={value}
-                            onChange={e => setValue(e.target.value)}
+                            onChange={onChange}
                         ></textarea>
                         <Text type='description' >{description}</Text>
                     </>
@@ -43,7 +52,8 @@ export default function Input ({ label, type, placeholder = '', options=[], requ
                         type={type}
                         placeholder={placeholder}
                         value={value}
-                        onChange={e => setValue(e.target.value)}
+                        onChange={onChange}
+                        required={required}
                     />
             }
         </label>
