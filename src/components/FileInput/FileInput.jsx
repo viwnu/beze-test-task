@@ -5,7 +5,7 @@ import IconPlus from '../icons/IconPlus'
 
 import styles from './style.css'
 
-export default function FileInput({ label, required=false }) {
+export default function FileInput({ label, required=false, setFile }) {
   const reducer = (state, action) => {
     switch (action.type) {
       case 'SET_DROP_DEPTH':
@@ -60,9 +60,10 @@ export default function FileInput({ label, required=false }) {
       files = files.filter(f => !existingFiles.includes(f.name))
       console.log(files)
 
-      dispatch({ type: 'ADD_FILE_TO_LIST', files });
-      dispatch({ type: 'SET_DROP_DEPTH', dropDepth: 0 });
-      dispatch({ type: 'SET_IN_DROP_ZONE', inDropZone: false });
+      dispatch({ type: 'ADD_FILE_TO_LIST', files })
+      setFile(files)
+      dispatch({ type: 'SET_DROP_DEPTH', dropDepth: 0 })
+      dispatch({ type: 'SET_IN_DROP_ZONE', inDropZone: false })
     }
   }
 

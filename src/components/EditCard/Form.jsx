@@ -13,6 +13,7 @@ export default function Form({setModal, organization, setOrganization}) {
                     options={['Санаторий', 'Музей', 'Библиотека']}
                     required={true}
                     value={organization.type}
+                    setValue={(type) => setOrganization({...organization, type})}
                 />
                 <Input
                     label='Название организации'
@@ -20,6 +21,7 @@ export default function Form({setModal, organization, setOrganization}) {
                     placeholder={`Санаторий "Огонёк"`}
                     required={true}
                     value={organization.name}
+                    setValue={(name) => setOrganization({...organization, name})}
                 />
                 <Input
                     label='Описание'
@@ -27,11 +29,13 @@ export default function Form({setModal, organization, setOrganization}) {
                     placeholder={`Санаторий "Огонёк"`}
                     description='Описание в модуле на сайте не показывается'
                     value={organization.description}
+                    setValue={(description) => setOrganization({...organization, description})}
                 />
                 <FileInput
                     label="Логотип"
                     required={true}
                     value={organization.logo}
+                    setFile={(logo) => setOrganization({...organization, logo})}
                 />
                 <Button type='primary' onClick={() => setModal('filled')} >Сохранить</Button>
             </form>

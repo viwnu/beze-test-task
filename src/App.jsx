@@ -33,6 +33,8 @@ export default function App() {
     logo: [],
   })
 
+  console.log('in app: ', organization)
+
   return (
 
     <div

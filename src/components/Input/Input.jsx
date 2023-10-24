@@ -1,7 +1,7 @@
 import Text from '../Text/Text'
 import styles from './style.css'
 
-export default function Input ({ label, type, placeholder = '', options=[], required=false, description='', value }) {
+export default function Input ({ label, type, placeholder = '', options=[], required=false, description='', value, setValue }) {
     console.log('required: ', required)
     return (
         <label className={styles.input} >
@@ -17,7 +17,10 @@ export default function Input ({ label, type, placeholder = '', options=[], requ
                     value={value}
                     defaultValue='Select your option'
                     className={styles.notselected}
-                    onChange={e => e.target.className=styles.selcted }
+                    onChange={e => {
+                        e.target.className=styles.selcted
+                        setValue(e.target.value)
+                    } }
                     required={required}
                 >
                     <option disabled>Select your option</option>
@@ -29,10 +32,19 @@ export default function Input ({ label, type, placeholder = '', options=[], requ
                 </select>
                 : type === 'textarea'
                     ? <>
-                        <textarea placeholder={placeholder} value={value} ></textarea>
+                        <textarea
+                            placeholder={placeholder}
+                            value={value}
+                            onChange={e => setValue(e.target.value)}
+                        ></textarea>
                         <Text type='description' >{description}</Text>
                     </>
-                    : <input type={type} placeholder={placeholder} value={value} />
+                    : <input
+                        type={type}
+                        placeholder={placeholder}
+                        value={value}
+                        onChange={e => setValue(e.target.value)}
+                    />
             }
         </label>
     )

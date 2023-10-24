@@ -6,24 +6,22 @@ import imgContainer from '../../../public/assets/image/imgContainer.png'
 
 import styles from './style.css'
 
-const cardTextFields = [
-    {
-        label: 'Тип',
-        value: 'Санаторий'
-    },
-    {
-        label: 'Название компании',
-        value: 'Санаторий "Огонёк"'
-    },
-    {
-        label: 'Описание',
-        value: 'Мой первый бизнес'
-    }
-]
+export default function FilledCard({setModal, organization}) {
+    const cardTextFields = [
+        {
+            label: 'Тип',
+            value: organization.type
+        },
+        {
+            label: 'Название компании',
+            value: organization.name
+        },
+        {
+            label: 'Описание',
+            value: organization.description
+        }
+    ]
 
-
-
-export default function FilledCard({setModal}) {
     return (
         <>
             <TitleContainer>
